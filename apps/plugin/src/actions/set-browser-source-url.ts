@@ -4,6 +4,7 @@ import type { SetBrowserSourceUrlSettings } from "obs-protocol";
 import type { ConnectionsService } from "../connections/service";
 import { resolveObs } from "../connections/resolve";
 import { setInputUrl } from "../obs/inputs";
+import { templatedText } from "./templated";
 
 export const SET_BROWSER_SOURCE_URL_ACTION = "set-browser-source-url";
 
@@ -18,7 +19,7 @@ export class SetBrowserSourceUrlAction extends StandaloneAction<SetBrowserSource
     ctx: StandaloneTriggerContext<SetBrowserSourceUrlSettings>,
   ): Promise<void> => {
     const input = ctx.settings.input?.trim();
-    const url = ctx.settings.url?.trim();
+    const url = templatedText(ctx.settings.url)?.trim();
 
     if (!input || !url) {
       console.warn("Set Browser Source URL ran with no Input/URL configured");

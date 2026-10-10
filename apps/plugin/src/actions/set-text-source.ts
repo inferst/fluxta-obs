@@ -4,6 +4,7 @@ import type { SetTextSourceSettings } from "obs-protocol";
 import type { ConnectionsService } from "../connections/service";
 import { resolveObs } from "../connections/resolve";
 import { setInputText } from "../obs/inputs";
+import { templatedText } from "./templated";
 
 export const SET_TEXT_SOURCE_ACTION = "set-text-source";
 
@@ -16,7 +17,7 @@ export class SetTextSourceAction extends StandaloneAction<SetTextSourceSettings>
 
   onTrigger = async (ctx: StandaloneTriggerContext<SetTextSourceSettings>): Promise<void> => {
     const input = ctx.settings.input?.trim();
-    const text = ctx.settings.text;
+    const text = templatedText(ctx.settings.text);
 
     if (!input || text === undefined) {
       console.warn("Set Text Source ran with no Input/text configured");

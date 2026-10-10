@@ -4,6 +4,7 @@ import type { SetMediaSourceFileSettings } from "obs-protocol";
 import type { ConnectionsService } from "../connections/service";
 import { resolveObs } from "../connections/resolve";
 import { setMediaSourceFile } from "../obs/media";
+import { templatedText } from "./templated";
 
 export const SET_MEDIA_SOURCE_FILE_ACTION = "set-media-source-file";
 
@@ -19,7 +20,7 @@ export class SetMediaSourceFileAction extends StandaloneAction<SetMediaSourceFil
     ctx: StandaloneTriggerContext<SetMediaSourceFileSettings>,
   ): Promise<void> => {
     const input = ctx.settings.input?.trim();
-    const path = ctx.settings.path?.trim();
+    const path = templatedText(ctx.settings.path)?.trim();
 
     if (!input || !path) {
       console.warn("Set Media/Image Source File ran with no Input/path configured");

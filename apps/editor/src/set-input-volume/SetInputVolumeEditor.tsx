@@ -1,4 +1,4 @@
-import { EditorPage, NumberField, useActionSettings } from "@fluxta/sdk/ui";
+import { EditorPage, TemplateField, useActionSettings } from "@fluxta/sdk/ui";
 import type { SetInputVolumeSettings } from "obs-protocol";
 
 import { ConnectionSelect } from "../shared/ConnectionSelect";
@@ -22,10 +22,10 @@ export function SetInputVolumeEditor() {
         value={values.input}
         onChange={set("input")}
       />
-      <NumberField
+      <TemplateField
         label="Volume"
-        min={0}
-        value={values.volumePercent}
+        // Actions saved before this field took templates hold a plain number.
+        value={String(values.volumePercent ?? "")}
         onChange={set("volumePercent")}
         placeholder="100"
         hint="Percent — matches what OBS's own mixer shows. 100 is unity gain; OBS allows boosting past it."

@@ -35,8 +35,10 @@ export type UnmuteInputSettings = WithConnection & {
 export type SetInputVolumeSettings = WithConnection & {
   input?: string;
   /** 0–100 and up (OBS allows boosting past unity); matches the percentage
-   * OBS's own mixer shows, converted to `inputVolumeMul` at the call site. */
-  volumePercent?: number;
+   * OBS's own mixer shows, converted to `inputVolumeMul` at the call site.
+   * A template, so saved as text; Actions saved before the field took
+   * templates still hold a plain number. */
+  volumePercent?: string | number;
 };
 
 export type SetSourceFilterSettings = WithConnection & {
@@ -67,16 +69,19 @@ export type SetMediaStateSettings = WithConnection & {
 /** Swaps the file a Media/Image Source plays, as opposed to controlling its playback. */
 export type SetMediaSourceFileSettings = WithConnection & {
   input?: string;
+  /** A template — may carry Run Variable references. */
   path?: string;
 };
 
 export type SetBrowserSourceUrlSettings = WithConnection & {
   input?: string;
+  /** A template — may carry Run Variable references. */
   url?: string;
 };
 
 export type SetTextSourceSettings = WithConnection & {
   input?: string;
+  /** A template — may carry Run Variable references. */
   text?: string;
 };
 
@@ -99,7 +104,8 @@ export type TakeScreenshotSettings = WithConnection & {
    * Full file path, including filename and extension — OBS writes exactly
    * this path. The image format is derived from the extension (see
    * `obs/screenshot.ts`'s `formatFromPath`) rather than asked for
-   * separately, so the two can never disagree.
+   * separately, so the two can never disagree. A template — may carry Run
+   * Variable references.
    */
   path?: string;
 };

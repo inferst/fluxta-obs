@@ -1,4 +1,4 @@
-import { EditorPage, TextField, useActionSettings } from "@fluxta/sdk/ui";
+import { EditorPage, TemplateField, useActionSettings } from "@fluxta/sdk/ui";
 import type { SetMediaSourceFileSettings } from "obs-protocol";
 
 import { ConnectionSelect } from "../shared/ConnectionSelect";
@@ -29,7 +29,7 @@ export function SetMediaSourceFileEditor() {
         value={values.input}
         onChange={set("input")}
       />
-      <TextField
+      <TemplateField
         label="File Path"
         value={values.path ?? ""}
         onChange={set("path")}

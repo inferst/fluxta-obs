@@ -1,4 +1,4 @@
-import { EditorPage, TextField, useActionSettings } from "@fluxta/sdk/ui";
+import { EditorPage, TemplateField, useActionSettings } from "@fluxta/sdk/ui";
 import type { SetBrowserSourceUrlSettings } from "obs-protocol";
 
 import { ConnectionSelect } from "../shared/ConnectionSelect";
@@ -27,9 +27,8 @@ export function SetBrowserSourceUrlEditor() {
         value={values.input}
         onChange={set("input")}
       />
-      <TextField
+      <TemplateField
         label="URL"
-        type="url"
         value={values.url ?? ""}
         onChange={set("url")}
         placeholder="https://example.com/overlay"
