@@ -4,6 +4,7 @@ import type { TakeScreenshotSettings } from "obs-protocol";
 import type { ConnectionsService } from "../connections/service";
 import { resolveObs } from "../connections/resolve";
 import { formatFromPath, saveScreenshot } from "../obs/screenshot";
+import { templatedText } from "./templated";
 
 export const TAKE_SCREENSHOT_ACTION = "take-screenshot";
 
@@ -24,7 +25,7 @@ export class TakeScreenshotAction extends StandaloneAction<TakeScreenshotSetting
 
   onTrigger = async (ctx: StandaloneTriggerContext<TakeScreenshotSettings>): Promise<void> => {
     const source = ctx.settings.source?.trim();
-    const path = ctx.settings.path?.trim();
+    const path = templatedText(ctx.settings.path)?.trim();
 
     if (!source || !path) {
       console.warn("Take Screenshot ran with no Source/path configured");

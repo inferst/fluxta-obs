@@ -1,4 +1,4 @@
-import { EditorPage, TextField, useActionSettings } from "@fluxta/sdk/ui";
+import { EditorPage, TemplateField, useActionSettings } from "@fluxta/sdk/ui";
 import type { TakeScreenshotSettings } from "obs-protocol";
 
 import { ConnectionSelect } from "../shared/ConnectionSelect";
@@ -22,12 +22,12 @@ export function TakeScreenshotEditor() {
         value={values.source}
         onChange={set("source")}
       />
-      <TextField
+      <TemplateField
         label="File Path"
         value={values.path ?? ""}
         onChange={set("path")}
         placeholder="C:\Users\you\Pictures\screenshot.png"
-        hint="Full path, filename and extension included — the image format is taken from the extension (.png, .jpg/.jpeg, or .bmp). A repeat trigger with the same path overwrites the previous screenshot."
+        hint="Full path, filename and extension included — the image format is taken from the extension (.png, .jpg/.jpeg, or .bmp). A repeat trigger with the same path overwrites the previous screenshot — put a variable in the filename to keep each one."
       />
     </EditorPage>
   );

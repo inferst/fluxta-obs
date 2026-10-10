@@ -1,4 +1,4 @@
-import { EditorPage, TextField, useActionSettings } from "@fluxta/sdk/ui";
+import { EditorPage, TemplateField, useActionSettings } from "@fluxta/sdk/ui";
 import type { SetTextSourceSettings } from "obs-protocol";
 
 import { ConnectionSelect } from "../shared/ConnectionSelect";
@@ -35,7 +35,7 @@ export function SetTextSourceEditor() {
         value={values.input}
         onChange={set("input")}
       />
-      <TextField
+      <TemplateField
         label="Text"
         multiline
         value={values.text ?? ""}
