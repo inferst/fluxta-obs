@@ -1,6 +1,7 @@
 /**
  * Reads a setting edited through a `TemplateField`, after the host has
- * substituted its Run Variable references (ADR-0030).
+ * substituted its Run Variable references (see Fluxta's Run Variables guide,
+ * https://fluxta.app/docs/plugins/guides/run-variables).
  *
  * A setting that was exactly one reference arrives with the variable's own
  * type intact, so a field the editor only ever saves as text can hold a

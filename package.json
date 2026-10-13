@@ -13,7 +13,7 @@
   "private": true,
   "scripts": {
     "build": "shx rm -rf dist && turbo run build --force",
-    "dev": "pnpm --filter obs-editor build && turbo run dev",
+    "dev": "pnpm --filter fluxta-obs-editor build && turbo run dev",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test"
   },
