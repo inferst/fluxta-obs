@@ -5,11 +5,12 @@ switch, the Stream going live, a Source shown, an Input muted, a Filter toggled)
 into Fluxta Events and Value Sources, and exposes Actions that act back on OBS
 over obs-websocket.
 
-Fluxta's own vocabulary — Plugin, Event, Event Field, Action, Run Variable,
-Value Source, Options Source, External Connection, Plugin Editor, Action
-Editor — is defined in the host's glossary and is not redefined here. OBS's
-nouns below are used as OBS itself uses them, narrowed to what this plugin
-does with them.
+Fluxta's own words — Action, Event, Event Source, Event Field, Run Variable,
+Value Source, Options Source, Plugin Editor, Action Editor, Plugin settings —
+mean what Fluxta's
+[Terminology](https://fluxta.app/docs/plugins/getting-started/terminology)
+says and are not redefined here. OBS's nouns below are used as OBS itself uses
+them, narrowed to what this plugin does with them.
 
 ## Language
 
@@ -18,13 +19,13 @@ does with them.
 **Connection**:
 One OBS Studio instance the plugin drives over obs-websocket: a name, a host, a
 port and an optional password, under an id the plugin chooses. Configured in
-the Plugin Editor, persisted in Plugin Settings, and reported to Fluxta as an
-External Connection. Every Action, Value Source and Event names the Connection
-it belongs to; a setting that names none means the sole configured one.
+the Plugin Editor, persisted in Plugin settings, and reported to Fluxta with
+`setConnections`, so it shows in Fluxta's connection indicator (see
+[Connections](https://fluxta.app/docs/plugins/guides/connections)). Every
+Action, Value Source and Event names the Connection it belongs to; a setting
+that names none means the sole configured one.
 _Avoid_: server, instance, socket, session (an `ObsSession` is the code that
-keeps one Connection's link alive). Not Fluxta's **Connection**, which is a
-process's own transport link to the host — this plugin never needs to name
-that one.
+keeps one Connection's link alive).
 
 **Connection Status**:
 A Connection's live link state: `connecting`, `connected`, or `error` with a

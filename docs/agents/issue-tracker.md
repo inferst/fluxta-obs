@@ -15,7 +15,9 @@ Infer the repo from `git remote -v` — `gh` does this automatically when run in
 
 ## Work that needs a Fluxta change
 
-The Plugin API belongs to Fluxta. When an issue here needs something `@fluxta/sdk` or the `fluxta` CLI does not offer, open an issue in Fluxta (`gh issue create -R fluxta/fluxta …`), and write `Blocked by fluxta/fluxta#<n>` in this repo's issue. Always write the full `owner/repo#<n>` for an issue outside this repo — a bare `#<n>` means this repo.
+The Plugin API — `@fluxta/sdk`, the manifest schema and the `fluxta` CLI — belongs to Fluxta, not to this repo. When work here needs something they do not offer, keep the issue in this repo: say in its body what is needed from Fluxta and why, apply `ready-for-human`, and do not work around the contract. A person takes it to Fluxta; the issue continues once a released SDK or CLI provides it.
+
+Always write the full `owner/repo#<n>` for an issue outside this repo — a bare `#<n>` means this repo.
 
 ## Pull requests as a triage surface
 
